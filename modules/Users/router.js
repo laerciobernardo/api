@@ -1,22 +1,22 @@
-const ACTION_PATH = './actions'
+const ACTIONS_FOLDER = '/actions'
+const ACTIONS_PATH = '.' + ACTIONS_FOLDER
+const ACTIONS_PATH_FULL = __dirname + ACTIONS_FOLDER
 
-//Actions
-const find = require('./actions/find')
-const findOne = require('./actions/findOne')
-const create = require('./actions/create')
-const update = require('./actions/update')
-const remove = require('./actions/remove')
 
-const actions = ['find', 'findOne', 'create', 'update', 'remove']
+const fs = require('fs')
 
+const listFilesIn = (path) => fs.readdirSync(path)
+const removeJSExtension = (action) => action.replace('.js', '')
 const createAction = (action) =>({
-   [action] : require(`${ACTION_PATH}/${action}`)
+   [action] : require(`${ACTIONS_PATH}/${action}`)
 })
-//Controller
+
 const toController = (obj, action) => Object.assign(obj, createAction(action))
 
 const createController = (actions) => actions.reduce(toController, {})
+const createActions = (path) => listFilesIn(path).map(removeJSExtension)
 
+const actions = createActions(ACTIONS_PATH_FULL)
 const Controller = createController(actions)
 
 //Routes
