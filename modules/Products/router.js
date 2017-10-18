@@ -18,12 +18,14 @@ const createActions = (path) => listFilesIn(path).map(removeJSExtension)
 const actions = createActions(ACTIONS_PATH_FULL)
 const Controller = createController(actions)
 
+// console.log(Controller)
+
 //Routes
 const routes = [
    {
       method:'get',
       path: '/',
-      action: Controller.find
+      action: Controller.findProd
    },
    {
       method:'get',
