@@ -28,7 +28,7 @@ const routes = [
    {
       method:'get',
       path: '/',
-      action: Controller.findProd
+      action: Controller.find
    },
    {
       method:'get',

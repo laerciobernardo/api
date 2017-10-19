@@ -1,3 +1,6 @@
+// const express = require('express')
+// const router = express.Router()
+
 const ACTIONS_FOLDER = '/actions'
 const ACTIONS_PATH = '.' + ACTIONS_FOLDER
 const ACTIONS_PATH_FULL = __dirname + ACTIONS_FOLDER

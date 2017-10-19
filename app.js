@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const router = express.Router()
-
-const users = require('./modules/Users/router')(router)
-const products = require('./modules/Products/router')(router)
+const users = require('./modules/Users/router')(express.Router())
+const products = require('./modules/Products/router')(express.Router())
+const clients = require('./modules/Clients/router')(express.Router())
 
 
 app.use('/products', products)
 app.use('/users', users)
+app.use('/clients', clients)
 
 module.exports = app
